@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import React from 'react'
 
 const Hero = () => {
@@ -15,12 +16,12 @@ Manage Your Expense        <strong className="font-extrabold text-blue-700 sm:bl
       </p>
 
       <div className="mt-8 flex flex-wrap justify-center gap-4">
-        <a
+        <Link
           className="block w-full rounded bg-blue-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-blue-700 focus:outline-none focus:ring active:bg-blue-500 sm:w-auto"
-          href="#"
+          href="/sign-in"
         >
           Get Started
-        </a>
+        </Link>
 
       
       </div>
