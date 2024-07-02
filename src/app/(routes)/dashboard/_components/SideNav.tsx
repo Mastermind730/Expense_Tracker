@@ -6,6 +6,8 @@ import {
     ShieldCheck,
   } from "lucide-react";
   import Image from "next/image";
+import Link from "next/link";
+import path from "path";
   import React from "react";
   
   interface MenuItem {
@@ -52,10 +54,12 @@ import {
         <div className="mt-5">
           {menuList.map((item: MenuItem) => (
             <div key={item.id} className="mt-5">
-              <h2 className="flex gap-2 items-center text-gray-500 font-medium cursor-pointer hover:text-primary hover:bg-blue-100 rounded-md p-5">
+              <Link href={item.path}>
+              <h2 className={`flex gap-2 mb-2 items-center text-gray-500 font-medium cursor-pointer hover:text-primary hover:bg-blue-100 rounded-md p-5 ${path==item.path &&'text-primary bg-bllue-100'}`}>
                 <item.icon  />
                 {item.name}
               </h2>
+              </Link>
             </div>
           ))}
         </div>
