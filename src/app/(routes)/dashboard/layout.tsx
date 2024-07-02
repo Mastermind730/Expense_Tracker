@@ -1,8 +1,19 @@
-import React from "react";
+"use client";
+import React, { useEffect } from "react";
 import SideNav from "./_components/SideNav";
 import DashboardHeader from "./_components/DashboardHeader";
+import useExistingBudget from "@/app/hooks/useExistingBudget";
+import { useRouter } from "next/navigation";
 
-const layout = ({ children }: { children: React.ReactNode }) => {
+const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
+  const router=useRouter();
+  const { budget } = useExistingBudget();
+
+  // console.log(budget);
+  if(!budget){
+    router.replace("/dashboard/budgets")
+  }
+  
   return (
     <div>
       <div className="fixed md:w-64 hidden md:block  ">
@@ -16,4 +27,4 @@ const layout = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-export default layout;
+export default DashboardLayout;
