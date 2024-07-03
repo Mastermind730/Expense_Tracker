@@ -8,11 +8,11 @@ export async function POST(request: Request) {
         if (!body.name || !body.amount) {
             return new NextResponse("Bad Request: Missing name or amount", { status: 401 });
         }
-
+        let amount=Number(body.amount)
         const newBudget = await prisma.budgets.create({
             data: {
                 name: body.name,
-                amount: body.amount,
+                amount: amount,
                 createdBy:body.user?.primaryEmailAddress?.emailAddress,
                 icon:body.emojiIcon
             },
