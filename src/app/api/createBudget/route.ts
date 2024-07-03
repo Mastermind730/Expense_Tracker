@@ -6,7 +6,7 @@ export async function POST(request: Request) {
         const body = await request.json();
         // const {user}=useUser();
         if (!body.name || !body.amount) {
-            return new NextResponse("Bad Request: Missing name or amount", { status: 400 });
+            return new NextResponse("Bad Request: Missing name or amount", { status: 401 });
         }
 
         const newBudget = await prisma.budgets.create({
@@ -17,8 +17,8 @@ export async function POST(request: Request) {
                 icon:body.emojiIcon
             },
         });
-        console.log("budget created");
-        return NextResponse.json(newBudget, { status: 400 });
+        // console.log("budget created");
+        return NextResponse.json(newBudget, { status: 200 });
     } catch (error: any) {
         console.error("Error creating budget:", error);
         return new NextResponse("Internal Server Error", { status: 500 });

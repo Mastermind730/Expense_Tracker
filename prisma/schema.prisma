@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider        = "prisma-client-js"
   previewFeatures = ["driverAdapters"]
@@ -14,11 +8,20 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Budgets {
+  id        Int        @id @default(autoincrement())
+  name      String     @db.VarChar(255)
+  amount    Int     
+  icon      String?    @db.VarChar(255)
+  createdBy String     @db.VarChar(255)
+  expenses  Expenses[] // Relation field for the one-to-many relationship with Expenses
+}
 
-model Budgets{
-  id Int @id @default(autoincrement()) 
-  name String @db.VarChar(255)
-  amount String @db.VarChar(255)
-  icon String? @db.VarChar(255)
-  createdBy String @db.VarChar(255)
+model Expenses {
+  id        Int     @id @default(autoincrement())
+  name      String  @db.VarChar(255)
+  amount    Int // Changed to Float for aggregation purposes
+  budgetId  Int
+  createdAt String  @db.VarChar(255)
+  budget    Budgets @relation(fields: [budgetId], references: [id]) // Relation field
 }
