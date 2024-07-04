@@ -29,14 +29,14 @@ import path from "path";
         id: 2,
         name: "Budgets",
         icon: PiggyBank,
-        path:"/budgets"
+        path:"/dashboard/budgets"
 
       },
       {
         id: 3,
         name: "Expenses",
         icon: ReceiptText,
-        path:"/expenses"
+        path:"/dashboard/expenses"
 
       },
       {

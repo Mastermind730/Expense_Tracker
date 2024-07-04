@@ -1,14 +1,9 @@
+import { FullBudget } from '@/app/types'
 import React from 'react'
 
-interface BudgetItemProps {
-    budget: {
-      id: number;
-      name: string;
-      amount: number;
-      icon: string;
-      totalItem: number;
-      totalSpend: number;
-    };
+
+interface BudgetItemProps{
+    budget:FullBudget
 }
 const BudgetItem:React.FC<BudgetItemProps> = ({
     budget

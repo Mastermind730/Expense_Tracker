@@ -1,6 +1,6 @@
 import prisma from "@/lib/prismadb";
 import { NextResponse } from "next/server";
-import { useUser } from "@clerk/nextjs";
+
 export async function POST(request: Request) {
     try {
         const body = await request.json();
