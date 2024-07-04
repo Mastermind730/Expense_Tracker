@@ -44,7 +44,7 @@ export async function GET(request:Request){
 
               return NextResponse.json({budgets:formattedBudgets},{status:200});
     } catch (error:any) {
-        console.log("error occured while fetching data")
+        console.log("error occured while fetching data",error)
         return new NextResponse("Internal Server Error",{status:500})
     }
 }
