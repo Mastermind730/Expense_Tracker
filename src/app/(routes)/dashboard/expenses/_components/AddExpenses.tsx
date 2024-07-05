@@ -1,15 +1,26 @@
 "use client";
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input'
+import axios from 'axios';
 import React, { useState } from 'react'
+import { toast } from 'sonner';
 
-const addNewExpense=()=>{
-
+interface AddExpensesProps{
+  refreshData:()=>void;
+  budgetId:number;
 }
 
-const AddExpenses = () => {
+const AddExpenses:React.FC<AddExpensesProps> = ({refreshData,budgetId}) => {
     const [name,setName]=useState("");
     const [amount,setAmount]=useState("");
+    const addNewExpense=async ()=>{
+      const data={name,amount,budgetId};
+        const result=await axios.post("/api/addExpense",data);
+        if (result && result.status === 200) {
+          refreshData();
+          toast("New Budget created!");
+        }
+    }
   return (
     <div  className='border p-5 rounded-lg mx-2'>
         <h2 className='font-bold text-2xl'>Add Expense</h2>
@@ -21,7 +32,7 @@ const AddExpenses = () => {
                   <h2 className='text-black font-medium my-1'>Expense Amount</h2>
                   <Input onChange={(e) => setAmount(e.target.value)} placeholder='e.g 1000' className='mt-2' />
                 </div>
-                <Button onClick={()=>addNewExpense()} disabled={!(name&&amount)} className='mt- w-full' >Add New Expense</Button>
+                <Button onClick={()=>addNewExpense()} disabled={!(name&&amount)} className='mt-2 w-full' >Add New Expense</Button>
     </div>
   )
 }
