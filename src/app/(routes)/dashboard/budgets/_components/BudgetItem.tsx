@@ -15,7 +15,8 @@ const BudgetItem: React.FC<BudgetItemProps> = ({ budget }) => {
 
 //   console.log(budget);
   return (
-    <Link href={`/dashboard/expenses/${budget.id}`} className='p-5 border rounded-lg h-[170px] gap-2 hover:shadow-md cursor-pointer'>
+    <Link href={`/dashboard/expenses/${budget.id}`} >
+        <div className='p-5 border rounded-lg h-[170px] gap-2 hover:shadow-md cursor-pointer'>
         <div className='flex gap-2 items-center justify-between mb-3'>
             <div className='flex gap-2 items-center'>
                 <h2 className='text-2xl p-3 bg-slate-100 rounded-full'>{budget.icon}</h2>
@@ -36,6 +37,7 @@ const BudgetItem: React.FC<BudgetItemProps> = ({ budget }) => {
             <div className='w-full bg-slate-300 h-2 rounded-full'>
                 <div className='bg-primary h-2 rounded-full' style={{width: `${perc}%`}}></div>
             </div>
+        </div>
         </div>
     </Link>
   );
