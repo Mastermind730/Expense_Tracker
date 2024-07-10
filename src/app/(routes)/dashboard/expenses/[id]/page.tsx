@@ -8,7 +8,7 @@ import AddExpenses from "../_components/AddExpenses";
 import ExpenseList from "../_components/ExpenseList";
 import { Expenses } from "@prisma/client";
 import { Button } from "@/components/ui/button";
-import { MoveLeftIcon, PenBoxIcon, PenIcon, TrashIcon } from "lucide-react";
+import { Edit, MoveLeftIcon, PenBoxIcon, PenIcon, TrashIcon } from "lucide-react";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -22,9 +22,11 @@ import {
 } from "@/components/ui/alert-dialog";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import EditBudget from "../_components/EditBudget";
 
 const Page = ({ params }: { params: Params }) => {
   const [budgetList, setBudgetList] = useState<FullBudget>();
+  const [edit,setEdit]=useState(false);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [expenses, setExpenses] = useState<Expenses[]>();
@@ -92,7 +94,9 @@ const Page = ({ params }: { params: Params }) => {
       </div>
 
       <div className="flex justify-end mb-2">
-        <Button className="mx-3"><PenBoxIcon/>Edit</Button>
+        {/* <Button onClick={()=>setEdit(true)} className="mx-3"><PenBoxIcon/>Edit</Button>
+        {edit && <EditBudget/>} */}
+        <EditBudget budgetList={budgetList} refreshData={fetchBudgets}/>
         <AlertDialog>
           <AlertDialogTrigger asChild>
             <Button variant="destructive" className="flex items-center gap-2">
