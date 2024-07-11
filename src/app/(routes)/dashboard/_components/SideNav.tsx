@@ -39,12 +39,7 @@ const SideNav: React.FC = () => {
       icon: ReceiptText,
       path: "/dashboard/expenses",
     },
-    {
-      id: 4,
-      name: "Upgrade",
-      icon: ShieldCheck,
-      path: "/upgrade",
-    },
+    
   ];
 
   return (
