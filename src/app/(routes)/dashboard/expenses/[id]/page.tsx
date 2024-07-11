@@ -88,7 +88,7 @@ const Page = ({ params }: { params: Params }) => {
     <div className="p-10">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-2xl font-bold flex items-center gap-2">
-          <MoveLeftIcon />
+          <MoveLeftIcon className="hover:text-gray-700 cursor-pointer" onClick={()=>router.replace("/dashboard/budgets")}  />
           My Expenses
         </h2>
       </div>

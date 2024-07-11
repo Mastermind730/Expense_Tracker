@@ -26,7 +26,7 @@ const CardInfo: React.FC<CardInfoProps> = ({ budget }) => {
   },[budget]);
 
   useEffect(() => {
-    if (budget.length > 0) {
+    if (budget?.length > 0) {
       calculateCardInfo();
     }
   }, [budget,calculateCardInfo]);

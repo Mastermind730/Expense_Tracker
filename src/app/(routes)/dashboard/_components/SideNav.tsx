@@ -53,15 +53,13 @@ const SideNav: React.FC = () => {
       <div className="mt-5">
         {menuList.map((item: MenuItem) => (
           <div key={item.id} className="mt-5">
-            <Link href={item.path}>
-              <a
-                className={`flex gap-2 mb-2 items-center text-gray-500 font-medium cursor-pointer hover:text-primary hover:bg-blue-100 rounded-md p-5 ${
+            <Link className={`flex gap-2 mb-2 items-center text-gray-500 font-medium cursor-pointer hover:text-primary hover:bg-blue-100 rounded-md p-5 ${
                   pathname === item.path ? 'text-primary bg-blue-100' : ''
-                }`}
-              >
+                }`} href={item.path}>
+             
                 <item.icon />
                 {item.name}
-              </a>
+              
             </Link>
           </div>
         ))}

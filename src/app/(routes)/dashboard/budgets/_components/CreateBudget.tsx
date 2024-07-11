@@ -33,11 +33,13 @@ const CreateBudget: React.FC<CreateBudgetProps> = ({ refreshData }) => {
       // console.log(data);
 
       const result = await axios.post("/api/createBudget", data);
-      console.log(result);
+      // console.log(result);
 
       if (result && result.status === 200) {
         refreshData();
         toast("New Budget created!");
+        setName("");
+        setAmount("");
         setIsDialogOpen(false); // Close the dialog
       } else {
         toast("Failed to create budget. Please try again.");
